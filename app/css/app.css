@@ -1,0 +1,42 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+
+.You {
+  color: blue;
+}
+
+.Stranger {
+  color: red;
+}
+
+#chattext {
+    height:300px;
+    width:100%;
+    border:1px solid #ccc;
+    font:16px/26px Georgia, Garamond, Serif;
+    overflow-y:scroll;
+}
+
+#chatinput {
+    width: 90%;
+}

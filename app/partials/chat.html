@@ -1,0 +1,22 @@
+<div id="chat">
+    <div ng-if="!searching && chatInProgress" id="chattext">
+        Say hi!<br>
+        <span ng-repeat='msg in transcript'>
+            <strong class="{{msg.participant}}">{{msg.participant}}:</strong> {{msg.txt}}<br>
+        </span>
+    </div>
+    <div ng-if="searching" id="chattext">
+        Searching for a conversation partner...
+    </div>
+    <div ng-if="!searching && !chatInProgress" id="chattext">
+        Finito.
+    </div>
+    <span ng-if="chatInProgress" >
+        <button ng-click="stopChat()">Stop</button>
+    </span>
+    <span ng-if="!chatInProgress">
+        <button ng-click="findNewPartner()">New</button>
+    </span>
+    <textarea ng-model="inputText" ng-keydown="keydown($event)" id="chatinput" type="text" placeholder="Chat:"></textarea>
+    <button ng-click="sendMsg()">Send</button>
+</div>
