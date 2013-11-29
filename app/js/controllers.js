@@ -9,6 +9,7 @@ controllers.controller('ChatController', ["$scope", 'socket', function($scope, s
     $scope.searching = true;
     $scope.transcript = [];
     $scope.inputText = "";
+    socket.emit('new', null);
 
     socket.on('leave', function() {
         $scope.chatInProgress = false;

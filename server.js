@@ -30,8 +30,6 @@ io.sockets.on('connection', function (socket) {
             });
         }
     }
-    findNewPartner();
-    console.log(unmatchedUsers);
 
     socket.on('leave', function() {
         if (partner) {
