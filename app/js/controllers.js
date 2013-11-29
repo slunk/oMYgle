@@ -45,6 +45,7 @@ controllers.controller('ChatController', ["$scope", 'socket', function($scope, s
 
     $scope.keydown = function($event) {
         if ($event.keyCode == 13) {
+            $event.preventDefault();
             $scope.sendMsg();
         }
     };
