@@ -1,12 +1,11 @@
 {
-  "name": "angularjs-seed",
-  "description": "A starter project for AngularJS",
+  "name": "oMygle",
   "devDependencies": {
     "phantomjs" : "~1.9",
     "karma" : "~0.10",
     "karma-junit-reporter" : "~0.1",
     "karma-jasmine" : "~0.1",
-    "karma-ng-scenario" : "~0.1",
+    "karma-ng-scenario" : "~0.1"
   },
   "dependencies": {
     "socket.io": "0.9.16",
