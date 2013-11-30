@@ -9,6 +9,7 @@
         <span ng-repeat='msg in transcript'>
             <strong class="{{msg.participant}}">{{msg.participant}}:</strong> {{msg.txt}}<br>
         </span>
+        <span id="bottom"></span>
     </div>
     <div ng-if="searching" class="well chattext">
         Searching for a conversation partner...

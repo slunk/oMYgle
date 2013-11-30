@@ -4,7 +4,7 @@
 
 var controllers = angular.module('myApp.controllers', []);
   
-controllers.controller('ChatController', ["$scope", 'socket', function($scope, socket) {
+controllers.controller('ChatController', ["$scope", "$location", "$anchorScroll", 'socket', function($scope, $location, $anchorScroll, socket) {
     $scope.chatInProgress = false;
     $scope.searching = true;
     $scope.transcript = [];
@@ -17,10 +17,7 @@ controllers.controller('ChatController', ["$scope", 'socket', function($scope, s
     });
 
     socket.on('msg', function(data) {
-        $scope.transcript.push({
-            "participant": "Stranger",
-            "txt": data
-        });
+        addMessage("Stranger", data);
     });
 
     socket.on('new', function() {
@@ -35,10 +32,7 @@ controllers.controller('ChatController', ["$scope", 'socket', function($scope, s
     };
 
     $scope.sendMsg = function() {
-        $scope.transcript.push({
-            "participant": "You",
-            "txt": $scope.inputText
-        });
+        addMessage("You", $scope.inputText);
         socket.emit('msg', $scope.inputText);
         $scope.inputText = "";
     };
@@ -55,4 +49,13 @@ controllers.controller('ChatController', ["$scope", 'socket', function($scope, s
         $scope.searching = true;
         socket.emit('new', null);
     };
+
+    function addMessage(participant, txt) {
+        $scope.transcript.push({
+            "participant": participant,
+            "txt": txt
+        });
+        $location.hash("bottom");
+        $anchorScroll();
+    }
 }]);
