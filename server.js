@@ -47,8 +47,21 @@ io.sockets.on('connection', function (socket) {
     });
 
     socket.on('disconnect', function () {
+        var idx = indexOfSocket();
+        if (idx >= 0) {
+            unmatchedUsers.splice(idx, 1);
+        }
         if (partner) {
             partner.emit('leave', null);
         }
     });
+
+    function indexOfSocket() {
+        for (var idx = 0; idx < unmatchedUsers.length; idx++) {
+            if (unmatchedUsers[idx].socket.id === socket.id) {
+                return idx;
+            }
+        }
+        return -1;
+    }
 });
