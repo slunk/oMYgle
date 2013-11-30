@@ -23,6 +23,8 @@ controllers.controller('ChatController', ["$scope", "$location", "$anchorScroll"
     socket.on('new', function() {
         $scope.chatInProgress = true;
         $scope.searching = false;
+        $location.hash("bottom");
+        $location.replace();
     });
 
     $scope.stopChat = function() {

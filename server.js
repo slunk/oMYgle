@@ -31,12 +31,7 @@ io.sockets.on('connection', function (socket) {
         }
     }
 
-    socket.on('leave', function() {
-        if (partner) {
-            partner.emit('leave', null);
-            partner = null;
-        }
-    });
+    socket.on('leave', leave);
 
     socket.on('msg', function(data) {
         partner.emit('msg', data);
@@ -46,15 +41,18 @@ io.sockets.on('connection', function (socket) {
         findNewPartner();
     });
 
-    socket.on('disconnect', function () {
+    socket.on('disconnect', leave);
+
+    function leave() {
         var idx = indexOfSocket();
         if (idx >= 0) {
             unmatchedUsers.splice(idx, 1);
         }
         if (partner) {
             partner.emit('leave', null);
+            partner = null;
         }
-    });
+    }
 
     function indexOfSocket() {
         for (var idx = 0; idx < unmatchedUsers.length; idx++) {
