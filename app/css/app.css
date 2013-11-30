@@ -29,14 +29,7 @@
   color: red;
 }
 
-#chattext {
-    height:300px;
-    width:100%;
-    border:1px solid #ccc;
-    font:16px/26px Georgia, Garamond, Serif;
-    overflow-y:scroll;
-}
-
-#chatinput {
-    width: 90%;
+.chattext {
+    height:400px;
+    overflow-y: scroll;
 }
